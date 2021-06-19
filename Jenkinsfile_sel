@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    stages {
+        stage('SCM checkout'){
+            steps {
+		        git "https://github.com/vistasunil/devopsIQ.git"
+            }
+		}
+	    stage('Build docker Image'){
+	        steps {
+    	        bat	"docker build . -t vistasunil/devopsdemo"
+	        }
+	    }
+	    stage('Remove existing website'){
+	        steps {
+    	        bat "docker rm -f mywebsite | exit 0"
+	        }
+	    }
+	    stage('Deploy website'){
+	        steps {
+    	        bat "docker run -d -p 82:80 --name mywebsite vistasunil/devopsdemo"
+	        }
+	    }
+	    stage ('SCM checkout Selenium'){
+	        steps {
+		        git "https://github.com/vistasunil/selenium.git"
+	        }
+		}
+    	stage ('Test Website'){
+    	    steps {
+        		bat "mvn clean install"
+        		dir("target") {
+        		   bat "java -jar SeleniumTest-0.0.1-SNAPSHOT.jar"
+        	   }
+    	    }
+    	}
+    }
+}
