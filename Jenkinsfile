@@ -17,7 +17,7 @@ pipeline {
 	}
 	stage('Build'){
 	    steps {
-    		sh "sudo docker build /home/ubuntu/workspace/an1 -t vistasunil/devopsdemo"
+    		sh "sudo docker build /home/ubuntu/jenkins/workspace/ansiblejob -t vistasunil/devopsdemo"
 	   }
 	}
 	stage('Docker Push'){
