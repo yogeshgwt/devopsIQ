@@ -22,7 +22,7 @@ pipeline {
 	    }
 	    stage('Deploy website'){
 	        steps {
-    	        	sh "docker run -d -p 82:80 --name mywebsite vistasunil/devopsdemo"
+    	        	sh "sudo docker run -d -p 82:80 --name mywebsite vistasunil/devopsdemo"
 	        }
 	    }
 	    stage ('SCM checkout Selenium'){
