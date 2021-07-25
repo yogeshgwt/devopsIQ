@@ -1,5 +1,5 @@
 ---
-- hosts: slave
+- hosts: ansibleslave
   become: true
   vars:
     - create_containers: 2
