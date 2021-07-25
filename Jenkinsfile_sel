@@ -1,5 +1,9 @@
 pipeline {
-    agent slave2
+    agent {
+        node {
+            label 'slave2'
+        }
+    }
     stages {
         stage('SCM checkout'){
             steps {
@@ -28,7 +32,7 @@ pipeline {
 		}
     	stage ('Test Website'){
     	    steps {
-        		bat "mvn clean install"
+        		sh "mvn clean install"
         		dir("target") {
         		   bat "java -jar SeleniumTest-0.0.1-SNAPSHOT.jar"
         	   }
