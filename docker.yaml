@@ -2,7 +2,7 @@
 - hosts: ansibleslave
   become: true
   vars:
-    - create_containers: 2
+    - create_containers: 5
     - default_container_name: my_website
     - default_container_image: vistasunil/devopsdemo:latest
     - container_port: "8"
