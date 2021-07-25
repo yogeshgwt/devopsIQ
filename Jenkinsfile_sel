@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent slave2
     stages {
         stage('SCM checkout'){
             steps {
@@ -8,17 +8,17 @@ pipeline {
 		}
 	    stage('Build docker Image'){
 	        steps {
-    	        bat	"docker build . -t vistasunil/devopsdemo"
+    	        	sh "sudo docker build /home/ubuntu/jenkins/workspace/seljob -t vistasunil/devopsdemo"
 	        }
 	    }
 	    stage('Remove existing website'){
 	        steps {
-    	        bat "docker rm -f mywebsite | exit 0"
+			sh "if [ `sudo docker ps -a -q|wc -l` -gt 0 ]; then sudo docker rm -f \$(sudo docker ps -a -q);fi"
 	        }
 	    }
 	    stage('Deploy website'){
 	        steps {
-    	        bat "docker run -d -p 82:80 --name mywebsite vistasunil/devopsdemo"
+    	        	sh "docker run -d -p 82:80 --name mywebsite vistasunil/devopsdemo"
 	        }
 	    }
 	    stage ('SCM checkout Selenium'){
