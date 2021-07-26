@@ -6,6 +6,7 @@ pipeline {
     }
     parameters {
     	string(name: 'serverIP', defaultValue: 'None', description: 'Enter Server IP ')
+	string(name: 'servername', defaultValue: 'None', description: 'Enter Ansible slave name ')
     }
     stages {
         stage('SCM checkout'){
@@ -31,12 +32,12 @@ pipeline {
 	}
 	stage('Configure servers with Docker and deploy website') {
             	steps {
-                	sh 'ansible-playbook docker.yaml -e "hostname=ansibleslave"'
+			sh 'ansible-playbook docker.yaml -e "hostname=${servername}"'
             	}
         }
 	stage('Install Chrome browser') {
             	steps {
-                	sh 'ansible-playbook chrome.yaml -e "hostname=ansibleslave"'
+                	sh 'ansible-playbook chrome.yaml -e "hostname=${servername}"'
             	}
         }
 	stage ('Testing'){
