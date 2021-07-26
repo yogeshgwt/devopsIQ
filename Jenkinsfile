@@ -27,7 +27,7 @@ pipeline {
 	}
 	stage('Docker Push'){
 		steps {
-		    sh "echo ${dockerpass} |sudo docker login --username vistasunil --password-stdin"
+		    sh "sudo docker login --username vistasunil --password ${dockerpass}"
                     sh "sudo docker push vistasunil/devopsdemo:latest"
 	        }
 	}
