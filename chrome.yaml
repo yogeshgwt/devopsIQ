@@ -1,5 +1,5 @@
 ---
-- hosts: "{{hostName}}"
+- hosts: "{{hostname}}"
   sudo: True
   vars:
     - apt_file: /etc/apt/sources.list.d/google-chrome.list
