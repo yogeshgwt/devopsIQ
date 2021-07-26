@@ -31,12 +31,12 @@ pipeline {
 	}
 	stage('Configure servers with Docker and deploy website') {
             	steps {
-                	sh 'ansible-playbook docker.yaml'
+                	sh 'ansible-playbook docker.yaml -e "hostname=ansibleslave"'
             	}
         }
 	stage('Install Chrome browser') {
             	steps {
-                	sh 'ansible-playbook chrome.yaml'
+                	sh 'ansible-playbook chrome.yaml -e "hostname=ansibleslave"'
             	}
         }
 	stage ('Testing'){
