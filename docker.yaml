@@ -1,5 +1,5 @@
 ---
-- hosts: {{hostName}}
+- hosts: "{{hostName}}"
   become: true
   vars:
     - create_containers: 5
