@@ -38,7 +38,7 @@ pipeline {
 		steps {
 			sh "sudo apt install python3-pip -y"
 			sh "pip3 install selenium"
-			sh "python3 sel.py"
+			sh "python3 selenium_test.py ${params.serverIP}"
 		}
 	}
     }
