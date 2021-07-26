@@ -11,4 +11,4 @@
     - name: Update apt cache
       apt: update_cache=yes
     - name: Install Google Chrome
-      apt: pkg=google-chrome-stable state=installed
+      apt: pkg=google-chrome-stable state=latest
