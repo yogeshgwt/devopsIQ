@@ -7,6 +7,7 @@ pipeline {
     parameters {
     	string(name: 'serverIP', defaultValue: 'None', description: 'Enter Server IP ')
 	string(name: 'servername', defaultValue: 'None', description: 'Enter Ansible slave name ')
+	password(name: 'dockerpass', description: 'Enter docker login password ')	    
     }
     stages {
         stage('SCM checkout'){
@@ -26,7 +27,7 @@ pipeline {
 	}
 	stage('Docker Push'){
 		steps {
-	            sh "cat /home/ubuntu/docker_login.txt |sudo docker login --username vistasunil --password-stdin"
+		    sh "echo ${dockerpass} |sudo docker login --username vistasunil --password-stdin"
                     sh "sudo docker push vistasunil/devopsdemo:latest"
 	        }
 	}
