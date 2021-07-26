@@ -37,7 +37,7 @@ pipeline {
         }
 	stage('Install Chrome browser') {
             	steps {
-                	sh 'ansible-playbook chrome.yaml -e "hostname=${servername}"'
+                	sh 'ansible-playbook chrome.yaml -e "hostname=localhost"'
             	}
         }
 	stage ('Testing'){
