@@ -29,9 +29,14 @@ pipeline {
                     sh "sudo docker push vistasunil/devopsdemo:latest"
 	        }
 	}
-	stage('Configure servers and Deploy') {
+	stage('Configure servers with Docker and deploy website') {
             	steps {
                 	sh 'ansible-playbook docker.yaml'
+            	}
+        }
+	stage('Install Chrome browser') {
+            	steps {
+                	sh 'ansible-playbook chrome.yaml'
             	}
         }
 	stage ('Testing'){
