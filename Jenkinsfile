@@ -39,14 +39,16 @@ pipeline {
 	        }
 	}
 	stage('Configure servers and Deploy') {
-            steps {
-                sh 'ansible-playbook docker.yaml'
-            }
+            	steps {
+                	sh 'ansible-playbook docker.yaml'
+            	}
         }
 	stage ('Testing'){
-		sh "sudo apt install python3-pip -y"
-		sh "pip3 install selenium"
-		sh "python3 sel.py"
+		steps {
+			sh "sudo apt install python3-pip -y"
+			sh "pip3 install selenium"
+			sh "python3 sel.py"
+		}
 	}
     }
 }
