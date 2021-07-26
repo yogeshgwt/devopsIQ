@@ -4,19 +4,10 @@ pipeline {
             label 'slave1'
         }
     }
+    parameters {
+    	string(name: 'serverIP', defaultValue: 'None', description: 'Enter Server IP ')
+    }
     stages {
-	stage("Interactive_Input") {
-            steps {
-                script {
-                def userInput = input(
-                 id: 'serverIP', message: 'Enter IP of website host', 
-                 parameters: [
-                 [$class: 'TextParameterDefinition', defaultValue: 'None', description: 'Enter IP of website host', name: 'ip']
-                ])
-                echo ("IP: "+userInput['ip'])
-                }
-            }
-        }
         stage('SCM checkout'){
             steps {
 		git "https://github.com/vistasunil/devopsIQ.git"
