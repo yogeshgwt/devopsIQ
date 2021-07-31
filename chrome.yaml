@@ -1,6 +1,7 @@
 ---
 - hosts: "{{hostname}}"
   become: yes
+  gather_facts: false
   vars:
     - apt_file: /etc/apt/sources.list.d/google-chrome.list
   tasks:
