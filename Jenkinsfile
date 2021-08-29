@@ -1,7 +1,7 @@
 pipeline {
     agent {
         node {
-            label 'slave1'
+            label 'slave2'
         }
     }
     parameters {
@@ -22,7 +22,7 @@ pipeline {
 	}
 	stage('Build'){
 	    steps {
-    		sh "sudo docker build /home/ubuntu/jenkins/workspace/ansiblejob -t vistasunil/devopsdemo"
+    		sh "sudo docker build /home/ubuntu/workspace/ansiblejob -t vistasunil/devopsdemo"
 	   }
 	}
 	stage('Docker Push'){
