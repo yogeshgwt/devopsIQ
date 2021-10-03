@@ -12,7 +12,7 @@ url="http://"+sys.argv[1]+":82/devopsIQ/";
 print("Testing Website: "+url)
 driver = webdriver.Chrome(executable_path=os.path.abspath("/usr/local/bin/chromedriver"), chrome_options=chrome_options)  
 driver.get(url);
-expectedTitle = "Jenkins Webhook Website";
+expectedTitle = "Cloudtrain Website";
 actualTitle = driver.title;
 print(actualTitle);
 if actualTitle == expectedTitle:
