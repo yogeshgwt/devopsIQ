@@ -22,7 +22,7 @@ pipeline {
 	}
 	stage('Build'){
 	    steps {
-    		sh "sudo docker build /home/ubuntu/jenkins/workspace/mypipleline -t vistasunil/devopsdemo"
+    		sh "sudo docker build /home/ubuntu/jenkins/workspace/$BUILD_PROJECT -t vistasunil/devopsdemo"
 	   }
 	}
 	stage('Docker Push'){
