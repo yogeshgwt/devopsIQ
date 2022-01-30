@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('SCM checkout'){
             steps {
-		git clone "https://github.com/vistasunil/devopsIQ.git"
+		git "https://github.com/vistasunil/devopsIQ.git"
             }
 	}
 	stage('Remove dockers'){
