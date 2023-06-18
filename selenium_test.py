@@ -10,7 +10,7 @@ chrome_options.binary_location = '/usr/bin/google-chrome'
 
 url="http://"+sys.argv[1]+":82/devopsIQ/";
 print("Testing Website: "+url)
-driver = webdriver.Chrome(executable_path=os.path.abspath("/usr/local/bin/chromedriver"), chrome_options=chrome_options)  
+driver = webdriver.Chrome("/usr/local/bin/chromedriver", chrome_options=chrome_options)  
 driver.get(url);
 expectedTitle = "Cloudtrain Website";
 actualTitle = driver.title;
