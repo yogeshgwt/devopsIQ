@@ -3,6 +3,7 @@ import sys
 from selenium import webdriver  
 from selenium.webdriver.common.keys import Keys  
 from selenium.webdriver.chrome.options import Options  
+from selenium.webdriver.chrome.service import Service
 
 chrome_options = Options()  
 chrome_options.add_argument("--headless")  
@@ -10,7 +11,10 @@ chrome_options.binary_location = '/usr/bin/google-chrome'
 
 url="http://"+sys.argv[1]+":82/devopsIQ/";
 print("Testing Website: "+url)
-driver = webdriver.Chrome("/usr/local/bin/chromedriver", chrome_options=chrome_options)  
+
+service = Service(executable_path="/usr/local/bin/chromedriver")
+driver = webdriver.Chrome(service=service, options=chrome_options) 
+
 driver.get(url);
 expectedTitle = "Cloudtrain Website";
 actualTitle = driver.title;
